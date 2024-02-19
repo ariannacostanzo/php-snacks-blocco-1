@@ -4,21 +4,11 @@ $name = $_GET['name'] ?? '';
 $email = $_GET['email']?? '';
 $age = intval($_GET['age'])?? '';
 
-$is_name_right = false;
-$is_email_right = false;
-$is_age_right = false;
+$is_name_right = strlen($name) > 3;
+$is_email_right = filter_var($email, FILTER_VALIDATE_EMAIL);
+$is_age_right = is_int($age);
 
-if (strlen($name) > 3) {
-    $is_name_right = true;
-}
-
-if (str_contains($email, '@') && str_contains($email, '.')) {
-    $is_email_right = true;
-}
-
-if (is_int($age)) {
-    $is_age_right = true;
-}
+var_dump( $is_name_right,$is_email_right, $is_age_right, );
 
 ?>
 
